@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 # simulate ssh process
+import os
 import sys
 import getpass
 
@@ -27,11 +28,16 @@ def main():
 				print("Connection closed by x.x.x.x")
 				sys.exit()
 
-	print(str)
-		
+	while True:
+		str=input("[root@localhos]# ")
+		if str=="exit":
+			print("Connection to x.x.x.x closed.")	
+			sys.exit()
+		else:
+			os.system(str)
 
 
-#do		
+#do	it	
 if __name__ == "__main__":
 	main()
 else:
