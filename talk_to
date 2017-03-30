@@ -1,0 +1,12 @@
+#!/usr/bin/expect
+
+set cmd [lindex $argv 0]
+set passwd "123456"
+spawn ./connect.py
+expect  {
+	"yes/no"	{send "yes\n";exp_continue}
+	"password:"	{send "$passwd\n"}
+}
+expect "#"
+send "$cmd\n"
+interact
