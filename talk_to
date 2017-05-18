@@ -4,8 +4,9 @@ set cmd [lindex $argv 0]
 set passwd "123456"
 spawn ./connect.py
 expect  {
-	"yes/no"	{send "yes\n";exp_continue}
-	"password:"	{send "$passwd\n"}
+	"yes/no"		{send "yes\n";exp_continue}
+	"password:"		{send "$passwd\n"}
+	default			{exit}
 }
 expect "#"
 send "$cmd\n"
