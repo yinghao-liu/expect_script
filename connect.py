@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # simulate ssh process
 import os
@@ -29,7 +29,7 @@ def main():
 				sys.exit()
 
 	while True:
-		str=input("[root@localhos]# ")
+		str=input("[root@localhost]# ")
 		if str=="exit":
 			print("Connection to x.x.x.x closed.")	
 			sys.exit()
