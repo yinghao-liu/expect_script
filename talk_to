@@ -3,11 +3,20 @@
 set cmd [lindex $argv 0]
 set passwd "123456"
 spawn ./connect.py
+send_user "spwan id is :$spawn_id\n"
 expect  {
-	"yes/no"		{send "yes\n";exp_continue}
+	"yes/no"		{send_user "\n0 string is $expect_out(0,string)\n";send "yes\r";exp_continue}
 	"password:"		{send "$passwd\n"}
 	default			{exit}
 }
 expect "#"
 send "$cmd\n"
-interact
+interact {
+	-echo "abc" {send_user "you typed abc\n"}
+	-echo "123" {send_user "you typed 123\n"}
+}
+send "\n"
+expect "#"
+send "$cmd\n"
+expect "#"
+exit
